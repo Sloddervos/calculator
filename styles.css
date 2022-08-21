@@ -1,0 +1,68 @@
+.calculator {
+    margin: auto;
+    background-color: orange;
+    height: 50pc;
+    width: 50pc;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    
+}
+.display{
+    background-color: grey;
+    height: 10pc;
+    width: 50pc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.displayPane{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: lightgrey;
+    height: 5pc;
+    width: 25pc;
+    font-size: x-large;
+    border-style: ridge;
+}
+
+.displayNumber{
+    font-size: 3pc;
+    font-weight: bold;
+
+
+}
+    
+
+.buttonContainer {
+    display: grid;
+    grid-template-columns: repeat(4, 80px);
+    height: auto;
+    width: auto;
+}
+
+.button {
+    height: 80px;
+    width: 80px;
+    font-size: x-large;
+    background-color: blue;
+    font-weight: bold;
+    
+
+
+}
+
+.number {
+    background-color: white;
+
+
+}
+
+.operator {
+background: blue;
+}
