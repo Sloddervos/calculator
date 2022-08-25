@@ -14,6 +14,17 @@ return operator === '+' ? add(a, b)
 :operator === '/' ? divide(a, b): null;
 }
 
+const recordValue = (numberOrOperator) => {
+    
+    calculation += Number(numberOrOperator);
+console.log(calculation);
+}
+
+    const populate = (numberOrOperator) => {
+displayNumbers = document.getElementById('displayNumber');
+displayNumbers.innerHTML = numberOrOperator;        
+            }
+            
 
 
 
@@ -28,34 +39,32 @@ return operator === '+' ? add(a, b)
     let buttonInnertext = [];
     let displayNumbers;
     let calculation = 0;
-    
-
-const recordValue = (numberOrOperator) => {
-    
-    calculation += Number(numberOrOperator);
-console.log(calculation);
-}
-
-    const populate = (numberOrOperator) => {
-displayNumbers = document.getElementById('displayNumber');
-displayNumbers.innerHTML = numberOrOperator;        
-            }
-            
-
-    for (x = 0; x < buttons.length; x++){
-       buttonArray.push(buttons[x]);
-    }
-    buttonArray.forEach(element => buttonInnertext.push(element.innerText));
-   
-    buttonArray.forEach(element => element.addEventListener('click', () => 
-    {   recordValue(element.innerHTML);
-        populate(element.innerHTML);
-    }));
-
     let operatorVariable = '-';
     let aV = 8;
     let bV = 3;
     
+    
+
+
+
+    for (x = 0; x < buttons.length; x++){
+       buttonArray.push(buttons[x]);
+    }
+    
+    buttonArray.forEach(element => buttonInnertext.push(element.innerText));
+   buttonArray.forEach(element => element.addEventListener('click', () => 
+    {
+        if (document.getElementById('AC') !== element){
+        populate(element.innerHTML);
+    }
+        if (isNaN(element.innerText) === false){
+        recordValue(element.innerHTML);
+        
+    }
+
+    })); 
+
+ 
    equalsButton = document.getElementById('equals');
    equalsButton.addEventListener('click', () =>
    {
@@ -63,20 +72,10 @@ displayNumbers.innerHTML = numberOrOperator;
  return operate(operatorVariable, aV, bV);
 
    });
+
 acButton = document.getElementById('AC');
 acButton.addEventListener('click', () => {
     displayNumber = document.getElementById('displayNumber');
     displayNumber.innerText = '';
-}) 
-
-      
-
-
-}
-
-
-
-
-
-
-
+});
+ };
