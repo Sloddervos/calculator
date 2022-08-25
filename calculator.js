@@ -3,10 +3,11 @@
     let buttonArray = [];
     let buttonInnertext = [];
     let displayNumbers;
+    let string;
     let calculation = [];
-    let operatorVariable = '*';
-    let aV = 4;
-    let bV = 10;
+    let operatorVariable;
+    let aV;
+    let bV;
     let result;
     
 const add = (a, b) => a + b;
@@ -36,7 +37,11 @@ console.log(calculation);
 
     const populate = (numberOrOperator) => {
 displayNumbers = document.getElementById('displayNumber');
-displayNumbers.innerHTML = numberOrOperator;        
+string = displayNumbers.innerHTML;
+(string.includes('+','-','*','/') === true) ? displayNumbers = '':
+
+(isNaN(numberOrOperator) === true) ? displayNumbers.innerHTML = numberOrOperator
+:displayNumbers.innerHTML += numberOrOperator       
             }
             
 
@@ -62,6 +67,7 @@ displayNumbers.innerHTML = numberOrOperator;
         if (document.getElementById('AC') !== element && document.getElementById('equals') !== element){
         populate(element.innerHTML);
         recordValues(element.innerHTML);
+// element.innerHTML here gives the number or operator. 
     }
      
         
