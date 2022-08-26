@@ -1,13 +1,12 @@
-     
     let buttons = document.getElementsByClassName('button');
     let buttonArray = [];
     let buttonInnertext = [];
     let displayNumbers;
-    let string;
-    let calculation = [];
-    let operatorVariable;
-    let aV;
-    let bV;
+    let operatorVariable = '';
+    let aV = '';
+    let bV = '';
+    let aVIntegers;
+    let bVIntegers;
     let result;
     
 const add = (a, b) => a + b;
@@ -27,22 +26,39 @@ return operator === '+' ? add(a, b)
 :operator === '/' ? divide(a, b): null;
 }
 
-const recordValues = (numberOrOperator) => {
-(isNaN(numberOrOperator) === false) ? calculation.push(Number(numberOrOperator))
-: calculation.push(numberOrOperator)
 
-console.log(calculation);
-
-}
 
     const populate = (numberOrOperator) => {
-displayNumbers = document.getElementById('displayNumber');
-string = displayNumbers.innerHTML;
-(string.includes('+','-','*','/') === true) ? displayNumbers = '':
-
-(isNaN(numberOrOperator) === true) ? displayNumbers.innerHTML = numberOrOperator
-:displayNumbers.innerHTML += numberOrOperator       
+        
+            displayNumbers = document.getElementById('displayNumber');
+            
+         if (isNaN(numberOrOperator) === true){   
+        operatorVariable = numberOrOperator;
+        displayNumbers.innerHTML = numberOrOperator;
+         }
+           
+            else {
+                if (aV === '' && numberOrOperator === '0')
+                {
+                    
+                }
+                else if (operatorVariable == false){
+                 aV += numberOrOperator;
+                    displayNumbers.innerHTML = aV;      
+                }
+                else {
+                    bV += numberOrOperator;
+                    displayNumbers.innerHTML = bV;
+                }
             }
+            
+                  
+
+        }
+
+      
+       
+            
             
 
 
@@ -52,11 +68,6 @@ string = displayNumbers.innerHTML;
 
 
  {   
-  
-    
-
-
-
     for (x = 0; x < buttons.length; x++){
        buttonArray.push(buttons[x]);
     }
@@ -65,9 +76,9 @@ string = displayNumbers.innerHTML;
    buttonArray.forEach(element => element.addEventListener('click', () => 
     {
         if (document.getElementById('AC') !== element && document.getElementById('equals') !== element){
+            
         populate(element.innerHTML);
-        recordValues(element.innerHTML);
-// element.innerHTML here gives the number or operator. 
+       
     }
      
         
@@ -78,27 +89,38 @@ string = displayNumbers.innerHTML;
    equalsButton = document.getElementById('equals');
    equalsButton.addEventListener('click', () =>
    {
-if (result == false){
-    console.log('reloading');
-}    
-if (calculation.length === 3){
-    operatorVariable = calculation[1];
-aV = calculation[0];
-bV = calculation[2];
-result = operate(operatorVariable, aV, bV);
-displayNumber.innerText = result;
-
-
+if (result){
+    aVIntegers = result;
+ 
+    
+}     
+else {
+    aVIntegers = Number(aV);
 }
+bVIntegers = Number(bV);
+result = operate(operatorVariable, aVIntegers, bVIntegers);
+displayNumbers.innerHTML = result;
+aV = '';
+bV = '';
+aVIntegers = '';
+bVIntegers = '';
 
 
-   });
+
+   
+})
+
+
+   };
 
 acButton = document.getElementById('AC');
 acButton.addEventListener('click', () => {
     displayNumber = document.getElementById('displayNumber');
     displayNumber.innerText = '';
-    calculation.splice(0, 100);
-    result = 0;
+ 
+    aV = '';
+    bV = '';
+    result = '';
+    operatorVariable = false;
 });
- };
+ ;
